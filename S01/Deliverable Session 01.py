@@ -2,41 +2,41 @@
 # a. (1) Create your first “helloworld”, print it on the terminal.
 # https://www.w3schools.com/python/python_intro.asp
 
-print("helloworld   \n")
+print("Hello world!  \n")
 
 # b. (1,5) Ask for your name and surname and save it in different variables. Print them later on the terminal.
 # https://www.w3schools.com/python/python_user_input.asp
 
 name = input("Enter your name: ")
-sname  = input("Enter your surname: ")
+last_name  = input("Enter your surname: ")
 
 print("\nYou entered:")
 print("First name:" + name)
-print("Surname:" + sname)
+print("Surname:" + last_name)
 
 # c. (1,5) Ask for a number and determine if it is odd or even • Use the modulus operator: “%” • Use conditional statements: “if” & “else”.
 
-n = int(input("Enter an integer: "))
+num1 = int(input("Enter an integer: "))
 
-if n % 2 == 0:
-    print(f"{n} is even.")
+if num1 % 2 == 0:
+    print(f"{num1} is even.")
 else:
-    print(f"{n} is odd.")
+    print(f"{num1} is odd.")
     
-# (3) Write a program that shows the divisors of an introduced number. Use “for” statement and use Python list operators.
+# d. (3) Write a program that shows the divisors of an introduced number. Use “for” statement and use Python list operators.
 # https://www.w3schools.com/python/python_for_loops.asp
 # https://www.programiz.com/python-programming/list
 
-num = int(input("Enter a positive integer: "))
-divisors = []
+num2 = int(input("Enter a positive integer: "))
+divs = []
 
-for i in range(1, num + 1):
-    if num % i == 0:
-        divisors.append(i)
+for i in range(1, num2 + 1):
+    if num2 % i == 0:
+        divs.append(i)
 
-print(f"Divisors of {num} are:", divisors)
+print(f"Divisors of {num2} are:", divs)
 
-#e. (3) Check if a word introduced is a palindrome. Use “if” statement.
+# e. (3) Check if a word introduced is a palindrome. Use “if” statement.
 # https://www.w3schools.com/python/python_strings_methods.asp
 
 word = input("Enter a word: ").strip()
