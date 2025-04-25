@@ -22,6 +22,7 @@ for i in range(n):
     accel = sense.get_accelerometer_raw()
     orientation = sense.get_orientation()
     
+    # Here we are not printing the values to the screen, just calculating the time taken for each sensor reading
     end_time = time.perf_counter()  # End timer
     elapsed_time = end_time - start_time
     print(f"Computation Time: {elapsed_time:.4f} seconds")
