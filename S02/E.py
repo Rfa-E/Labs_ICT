@@ -1,3 +1,5 @@
+# Deliverables Session 02 - Rafael Antonio Echevarria Silva
+
 from sense_hat import SenseHat
 import time
 
