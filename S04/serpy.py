@@ -4,7 +4,6 @@ import random
 
 sense = SenseHat()
 
-# Define colours
 g = (0, 255, 0)   
 b = (0, 0, 255)     
 r = (255, 0, 0)   
@@ -12,19 +11,6 @@ bg = (0, 0, 0)
 
 direction ="right"
 
-# Labyrinth layout (flattened 8x8 grid)
-maze = [
-    b, b, b, b, b, b, b, b,
-    b, bg, bg, bg, bg, bg, bg, b,
-    b, bg, bg, bg, bg, bg, bg, b,
-    b, bg, bg, bg, bg, bg, bg, b,
-    b, bg, bg, bg, bg, bg, bg, b,
-    b, bg, bg, bg, bg, bg, bg, b,
-    b, bg, bg, bg, bg, bg, bg, b,
-    b, b, b, b, b, b, b, b
-]
-
-# Starting position of the player
 serpi = [(2, 4), (1, 4), (0, 4)]
 
 def food_spawn():
