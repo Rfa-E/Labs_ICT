@@ -4,12 +4,10 @@ import random
 
 sense = SenseHat()
 
-# Define colours
-g = (0, 255, 0)   # Wall (green)
-b = (0, 0, 0)     # Path (black)
-r = (255, 0, 0)   # Player (red)
+g = (0, 255, 0)   # Wall
+b = (0, 0, 0)     # Path
+r = (255, 0, 0)   # Player
 
-# Labyrinth layout (flattened 8x8 grid)
 maze = [
     g, b, g, g, g, g, g, g,
     g, b, g, b, b, b, b, g,
@@ -21,15 +19,12 @@ maze = [
     g, g, b, g, g, g, g, g
 ]
 
-# Starting position of the player
 player_x = 1
 player_y = 0
 
-# Convert 1D maze into 2D for easier indexing
 def maze_at(x, y):
     return maze[y * 8 + x]
 
-# Update display with player position
 def draw_maze():
     display = maze[:]
     display[player_y * 8 + player_x] = r
@@ -37,7 +32,6 @@ def draw_maze():
 
 draw_maze()
 
-# Main loop to listen for joystick and move
 while True:
     for event in sense.stick.get_events():
         if event.action != 'pressed':
@@ -54,7 +48,6 @@ while True:
         elif event.direction == 'right':
             new_x = min(7, player_x + 1)
 
-        # Only move if the target cell is a path (not a wall)
         if maze_at(new_x, new_y) == b:
             player_x, player_y = new_x, new_y
             draw_maze()
