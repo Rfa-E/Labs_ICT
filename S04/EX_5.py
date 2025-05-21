@@ -11,7 +11,7 @@ r = (255, 0, 0)   # Player (red)
 
 # Labyrinth layout (flattened 8x8 grid)
 maze = [
-    g, r, g, g, g, g, g, g,
+    g, b, g, g, g, g, g, g,
     g, b, g, b, b, b, b, g,
     g, b, b, b, g, g, b, g,
     g, g, g, g, g, g, b, g,
@@ -21,13 +21,13 @@ maze = [
     g, g, b, g, g, g, g, g
 ]
 
-# Convert 1D maze into 2D for easier indexing
-def maze_at(x, y):
-    return maze[y * 8 + x]
-
 # Starting position of the player
 player_x = 1
 player_y = 0
+
+# Convert 1D maze into 2D for easier indexing
+def maze_at(x, y):
+    return maze[y * 8 + x]
 
 # Update display with player position
 def draw_maze():

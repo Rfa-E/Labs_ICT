@@ -12,7 +12,7 @@ message = "Exercise 2: Rafael Echevarria Silva"
 pause = 0.5
 
 for letter in message:
-    sense.show_letter(letter)
+    sense.show_letter(letter, text_colour=[255, 0, 0], back_colour=[0, 0, 125])
     sleep(pause)
 
 sense.clear()
