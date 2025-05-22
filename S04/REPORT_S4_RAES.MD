@@ -2,7 +2,7 @@
 
 ## Rafael Antonio Echevarria Silva
 
-In this session, we observed how we need to handle data to represent it on the LED matrix, starting with setting individual pixels and then moving on to an 8x8 matrix using the **sense.set_pixels()** function..
+In this session, we observed how we need to handle data to represent it on the LED matrix, starting with setting individual pixels and then moving on to an 8x8 matrix using the **sense.set_pixels()** function.
 
 ### Ex.1: Writing pixels
 
