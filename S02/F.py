@@ -6,7 +6,7 @@ import time
 sense = SenseHat()
 sense.clear()
 
-n = 10 # Number of readings to be taken
+n = 10
 
 # F. (1) To obtain the “sample frequency” for each sensor
 
@@ -49,5 +49,4 @@ for i in range(n):
     
     print("-" * 50)
     
-    time.sleep(1) # Sleep for 1 second
     sense.clear()

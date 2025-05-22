@@ -10,7 +10,8 @@ sense.clear()
 
 n = 10
 
-# I. (0,5) To write sensor information in a “.csv” file, but using a file for each sensor
+# J. (0,5) To acquire samples slower using “sleep” function
+## To acquire samples more slowly, we can use the sleep function "time.sleep(1)".
 
 files = {
     'temperature': 'temperature.csv',

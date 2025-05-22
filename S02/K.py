@@ -9,24 +9,16 @@ sense = SenseHat()
 sense.clear()
 
 n = 10
-csv_filename = "sensor_data.csv"
 
-# H. (1,5) To write sensor information in a common “.csv” file
+# K. (1,5) To control the time and to measure sensor information each 1 second
 
-with open(csv_filename, mode='w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerow([
-        "Time", "Temp (C)", "Pressure (hPa)", "Humidity (%)", 
-        "North (°)", 
-        "Magneto X", "Magneto Y", "Magneto Z",
-        "Gyro X", "Gyro Y", "Gyro Z",
-        "Accel X", "Accel Y", "Accel Z",
-        "Pitch", "Roll", "Yaw"
-    ])
+interval = 1 # seconds
+
+start_time = time.time()
 
 for i in range(n):
+    current_time = time.time()
 
-    # Get current date and time
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
     print(f"Timestamp: {timestamp}")
     
@@ -35,7 +27,6 @@ for i in range(n):
     hum = round(sense.get_humidity(), 1)
     
     print("Temperature: {0} C".format(temp) + " Pressure: {0} hPa".format(pres) + " Humidity: {0} %".format(hum))
-    print("-" * 50)
 
     north = sense.get_compass()
     print(f"North: {north:.2f}°")
@@ -52,15 +43,7 @@ for i in range(n):
     orientation = sense.get_orientation()
     print(f"Orientation: pitch={orientation['pitch']:.2f}, roll={orientation['roll']:.2f}, yaw={orientation['yaw']:.2f}")
     
-    print("-" * 50)
-    
-    writer.writerow([
-            timestamp, temp, pres, hum,
-            north,
-            round(magneto['x'], 2), round(magneto['y'], 2), round(magneto['z'], 2),
-            round(gyro['x'], 2), round(gyro['y'], 2), round(gyro['z'], 2),
-            round(accel['x'], 2), round(accel['y'], 2), round(accel['z'], 2),
-            round(orientation['pitch'], 2), round(orientation['roll'], 2), round(orientation['yaw'], 2)
-        ])
-    
+    next_sample_time = start_time + (i + 1) * interval
+    sleep_time = max(0, next_sample_time - current_time) 
+    time.sleep(sleep_time)
     sense.clear()

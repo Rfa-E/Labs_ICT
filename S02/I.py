@@ -91,5 +91,4 @@ for i in range(n):
         csv.writer(f).writerow([timestamp, round(orientation['pitch'], 2), round(orientation['roll'], 2), round(orientation['yaw'], 2)])
     
     print("-" * 50)
-    time.sleep(1)
     sense.clear()

@@ -35,5 +35,4 @@ for i in range(n):
     print(f"Orientation: pitch={orientation['pitch']:.2f}, roll={orientation['roll']:.2f}, yaw={orientation['yaw']:.2f}")
     
     print("-" * 50)
-    time.sleep(1) # Sleep for 1 second
     sense.clear()

@@ -6,7 +6,7 @@ import time
 sense = SenseHat()
 sense.clear()
 
-n = 10 # Number of readings to be taken
+n = 10
 
 # E. (0,75) To calculate the computation time without using “print” for show sensor information in the screen
 
@@ -30,5 +30,4 @@ for i in range(n):
     print(f"Computation Time: {elapsed_time:.4f} seconds")
     print("-" * 50)
     
-    time.sleep(1) # Sleep for 1 second
     sense.clear()

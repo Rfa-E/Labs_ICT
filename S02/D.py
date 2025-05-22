@@ -41,5 +41,4 @@ for i in range(n):
     print(f"Computation Time: {elapsed_time:.4f} seconds")
     print("-" * 50)
     
-    time.sleep(1)
     sense.clear()
