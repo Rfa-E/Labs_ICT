@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sesion Six</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #0056b3;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 120px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px 10px 0 0;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Measurements from the Raspberry Pi SenseHat sensors</h1>
+    <p>This is an exercise for the ICT subject that demands us to make a web page where we must showcase everything we have learnt on the subject.</p>
+    <img src="https://atenea.upc.edu/pluginfile.php/4096985/user/icon/boost/f1?rev=1" alt="UPC Logo">
+    <a href="http://127.0.0.1:5000/info/sensors">Sensors page</a>
+    <a href="http://127.0.0.1:5000/info/variables">Variables page</a>
+    <a href="http://127.0.0.1:5000/info/measures">Measures page</a>
+</body>
+<h2>Send a Message to the API</h2>
+<form action="/showtext" method="POST">
+    <label for="usertext">Enter your text:</label><br>
+    <input type="text" id="usertext" name="usertext" required>
+    <input type="submit" value="Submit">
+</form>
+
+</html>
