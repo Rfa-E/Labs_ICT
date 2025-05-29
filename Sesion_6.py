@@ -1,5 +1,12 @@
 from flask import Flask, jsonify, render_template, request
 import sqlite3
+from sense_hat import SenseHat
+import random
+
+sense = SenseHat()
+
+def random_colour():
+    return (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
 app = Flask(__name__)
 
@@ -34,8 +41,11 @@ def info(name):
 @app.route('/showtext', methods=['POST'])
 def showtext():
     user_input = request.form.get('usertext')
-    print(f"Received text from form: {user_input}")
-    return f"<h1>You sent: {user_input}</h1><p>Check the server console for the printed text.</p>"
+    rand = random_colour()
+    sense.show_message(user_input, text_colour = rand, back_colour = (0,0,0))
+    return render_template('main.html')
+#     print(f"Received text from form: {user_input}")
+#     return f"<h1>You sent: {user_input}</h1><p>Check the server console for the printed text.</p>"
 
 # if __name__ == '__main__':
 #     app.run(debug=True, port=5000)
