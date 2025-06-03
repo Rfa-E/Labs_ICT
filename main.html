@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ group_name }} Panel de Control VMS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ group_name }} Panel de Control VMS</h1>
+
+        <h2>Mensaje actual del VMS:</h2>
+        <p>{{ message }}</p>
+
+        <h3>Enviar un nuevo mensaje al VMS:</h3>
+        <form method="post">
+            <input type="text" name="new_message" placeholder="Escribe un nuevo mensaje..." required>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <h3>Condiciones del clima:</h3>
+        <div class="{{ 'recomendacion-buena' if 'buen día' in recommendation else 'recomendacion-mala' }}">
+            {{ recommendation }}
+        </div>
+
+        <h3>Variables del sensor:</h3>
+        <ul>
+            {% for var in variables %}
+                <li><a href="{{ url_for('variable_page', variable_id=var) }}" target="_blank">{{ var }}</a></li>
+            {% endfor %}
+        </ul>
+
+        <h3>Enlaces a sensores en vivo:</h3>
+        <ul>
+            {% for var in variables %}
+                <li><a href="{{ url_for('live_sensor', variable_id=var) }}" target="_blank">{{ var }} (en vivo)</a></li>
+            {% endfor %}
+        </ul>
+
+        <footer>
+            <p>Fecha: {{ date }}</p>
+        </footer>
+    </div>
+</body>
+</html>
+
