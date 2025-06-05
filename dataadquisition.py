@@ -37,7 +37,7 @@ while True:
     elif temperature > 35:
         message = "Temperature is more higher"
     elif humidity > 80 and pressure < 900:
-        message = "Drive carefully, it's can rain in any moment"
+        message = "Drive carefully, it can rain any moment"
     else:
         message = "have a nice trip"
 
