@@ -13,8 +13,6 @@ Therefore, we first need to install the Flask library through the terminal. The 
 export FLASK_APP=name_of_script.py flask run -- host=´0.0.0.0´
 ```
 
-Example exercise:
-
 ### Ex. 2: Read sensors on demand
 
 This exercise tells us that we need to read data from SenseHat sensors and return it to the web service via REST endpoints. To do this, we create a new route with **/temperature**, read the sensor using SenseHat, and return the data. We also need to incorporate the date and time the sample was taken, so we need the **Datetime** library. We return both data to the web service.

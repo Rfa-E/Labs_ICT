@@ -4,21 +4,19 @@ import random
 
 sense = SenseHat()
 
-g = (0, 255, 0)   
-b = (0, 0, 255)     
-r = (255, 0, 0)   
-bg = (0, 0, 0)
+g = (0, 255, 0)   # Color de la serpiente
+r = (255, 0, 0)   # Color de la comida
 
-direction ="right"
-
+direction = "right"
 serpi = [(2, 4), (1, 4), (0, 4)]
+contador = 0
 
 def food_spawn():
     while True:
         x, y = random.randint(1, 6), random.randint(1, 6)
-        if(x, y) not in serpi:
-            return(x, y)
-        
+        if (x, y) not in serpi:
+            return (x, y)
+
 food = food_spawn()
 
 def draw():
@@ -29,18 +27,26 @@ def draw():
 
 def update_direction():
     global direction
-    for event in sense.stick.get_events():
-        if event.action != 'pressed':
-            continue
+    accel = sense.get_accelerometer_raw()
+    x = accel['x']
+    y = accel['y']
 
-        if event.direction == 'up' and direction != "down":
-            direction = "up"
-        elif event.direction == 'down' and direction != "up":
-            direction = "down"
-        elif event.direction == 'left' and direction != "right":
-            direction = "left"
-        elif event.direction == 'right' and direction != "left":
+    if abs(x) > abs(y): 
+        if x > 0.2 and direction != "left":
             direction = "right"
+        elif x < -0.2 and direction != "right":
+            direction = "left"
+    else: 
+        if y > 0.2 and direction != "up":
+            direction = "down"
+        elif y < -0.2 and direction != "down":
+            direction = "up"
+
+def dead(muerte):
+    if muerte:
+        sense.show_message(f"Game Over Puntos: {contador}", text_colour=(255, 0, 0))
+        sleep(2)
+        exit()
 
 def mov_serpi():
     cabeza_x, cabeza_y = serpi[0]
@@ -52,23 +58,24 @@ def mov_serpi():
         cabeza_x -= 1
     elif direction == "right":
         cabeza_x += 1
-    nueva_cabeza = (cabeza_x % 7, cabeza_y % 7)
-    return nueva_cabeza
+    if not (0 <= cabeza_x < 8 and 0 <= cabeza_y < 8):
+        dead(True)
+    return cabeza_x, cabeza_y
 
 while True:
     update_direction()
     nueva_cabeza = mov_serpi()
-    
+
     if nueva_cabeza in serpi:
-        sense.show_message("Game Over", text_colour = (255, 0, 0))
-        break
-    
+        dead(True)
+
     serpi.insert(0, nueva_cabeza)
-    
+
     if nueva_cabeza == food:
         food = food_spawn()
+        contador += 1
     else:
         serpi.pop()
-        
+
     draw()
-    sleep(0.2)
+    sleep(0.6)

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Valor de {{ variable }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Valor actual de: {{ variable }}</h1>
+        <p style="font-size: 1.5em; font-weight: 600;">{{ value }}</p>
+
+        <a href="/" style="display: inline-block; margin-top: 1.5em;">← Volver al panel principal</a>
+    </div>
+</body>
+</html>
+
